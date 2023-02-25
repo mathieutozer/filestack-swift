@@ -6,7 +6,11 @@
 //  Copyright © 2021 Filestack. All rights reserved.
 //
 
+#if os(iOS)
 import UIKit
+#else
+import Cocoa
+#endif
 
 /// Allows you to programmatically manipulate your images in a way that provides a version of the image that is
 /// exactly of the shape you want, while keeping it’s aspect ratio and cutting out least interesting fragments of
@@ -55,7 +59,7 @@ public extension SmartCropTransform {
     ///
     /// - Parameter value: Sets the color used for filling the bars that appear when the image is cropped.
     @discardableResult
-    func fillColor(_ value: UIColor) -> Self {
+    func fillColor(_ value: PlatformColor) -> Self {
         return appending(key: "fill_color", value: value.hexString)
     }
 

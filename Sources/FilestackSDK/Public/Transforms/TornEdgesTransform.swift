@@ -7,7 +7,11 @@
 //
 
 import Foundation
+#if os(iOS)
 import UIKit
+#else
+import Cocoa
+#endif
 
 /// Applies a torn edge border effect to the image.
 public class TornEdgesTransform: Transform {
@@ -35,7 +39,7 @@ public extension TornEdgesTransform {
     ///
     /// - Parameter value: Sets the background color to display behind the torn edge effect.
     @discardableResult
-    func background(_ value: UIColor) -> Self {
+    func background(_ value: PlatformColor) -> Self {
         return appending(key: "background", value: value.hexString)
     }
 }

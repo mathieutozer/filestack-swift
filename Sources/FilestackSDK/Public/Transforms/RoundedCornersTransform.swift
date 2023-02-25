@@ -7,7 +7,11 @@
 //
 
 import Foundation
+#if os(iOS)
 import UIKit
+#else
+import Cocoa
+#endif
 
 /// Rounds the image's corners.
 public class RoundedCornersTransform: Transform {
@@ -51,7 +55,7 @@ public extension RoundedCornersTransform {
     /// - Parameter value: Sets the background color to display where the rounded corners
     /// have removed part of the image.
     @discardableResult
-    func background(_ value: UIColor) -> Self {
+    func background(_ value: PlatformColor) -> Self {
         return appending(key: "background", value: value.hexString)
     }
 }

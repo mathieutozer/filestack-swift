@@ -7,7 +7,9 @@
 //
 
 import Foundation
+#if os(iOS)
 import MobileCoreServices
+#endif
 
 extension URL: Uploadable {
     public var filename: String? { lastPathComponent }

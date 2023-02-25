@@ -7,7 +7,11 @@
 //
 
 import Foundation
+#if os(iOS)
 import UIKit
+#else
+import Cocoa
+#endif
 
 /// Converts the image to black and white.
 public class ASCIITransform: Transform {
@@ -26,7 +30,7 @@ public extension ASCIITransform {
     ///
     /// - Parameter value: Sets the background color to display behind the image.
     @discardableResult
-    func background(_ value: UIColor) -> Self {
+    func background(_ value: PlatformColor) -> Self {
         return appending(key: "background", value: value.hexString)
     }
 
@@ -34,7 +38,7 @@ public extension ASCIITransform {
     ///
     /// - Parameter value: Sets the foreground color to display behind the image.
     @discardableResult
-    func foreground(_ value: UIColor) -> Self {
+    func foreground(_ value: PlatformColor) -> Self {
         return appending(key: "foreground", value: value.hexString)
     }
 

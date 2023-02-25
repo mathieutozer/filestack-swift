@@ -7,7 +7,11 @@
 //
 
 import Foundation
+#if os(iOS)
 import UIKit
+#else
+import Cocoa
+#endif
 
 /// Converts the image to a different format.
 ///
@@ -37,7 +41,7 @@ public extension ConvertTransform {
     /// - Parameter value: Set a background color when converting transparent .png files
     /// into other file types.
     @discardableResult
-    func background(_ value: UIColor) -> Self {
+    func background(_ value: PlatformColor) -> Self {
         return appending(key: "background", value: value.hexString)
     }
 

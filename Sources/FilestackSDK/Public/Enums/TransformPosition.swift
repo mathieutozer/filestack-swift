@@ -7,7 +7,11 @@
 //
 
 import Foundation
+#if os(iOS)
 import UIKit
+#else
+import Cocoa
+#endif
 
 /// Represents an image transform position type.
 public struct TransformPosition: OptionSet {

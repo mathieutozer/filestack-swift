@@ -6,6 +6,14 @@
 //  Copyright © 2017 Filestack. All rights reserved.
 //
 
+#if os(iOS)
+import UIKit
+typealias PlatformImage = UIImage
+#else
+import Cocoa
+typealias PlatformImage = NSImage
+#endif
+
 import OHHTTPStubs
 import OHHTTPStubsSwift
 import XCTest
@@ -101,7 +109,7 @@ class FileLinkTests: XCTestCase {
         XCTAssertEqual(response?.data?.count, 200_367)
         XCTAssertNil(response?.error)
 
-        let image = UIImage(data: response!.data!)
+        let image = PlatformImage(data: response!.data!)
         XCTAssertNotNil(image)
     }
 
@@ -309,7 +317,7 @@ class FileLinkTests: XCTestCase {
         XCTAssertEqual(response?.destinationURL, destinationURL)
         XCTAssertNil(response?.error)
 
-        let image = UIImage(contentsOfFile: destinationURL.path)
+        let image = PlatformImage(contentsOfFile: destinationURL.path)
         XCTAssertNotNil(image)
     }
 

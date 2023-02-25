@@ -7,7 +7,17 @@
 //
 
 import Foundation
+#if os(iOS)
 import UIKit
+#else
+import Cocoa
+#endif
+
+#if os(iOS)
+public typealias PlatformColor = UIColor
+#else
+public typealias PlatformColor = NSColor
+#endif
 
 /// Applies a vignette border effect to the image.
 public class VignetteTransform: Transform {
@@ -42,7 +52,7 @@ public extension VignetteTransform {
     ///
     /// - Parameter value: Replaces the default transparent background with the specified color.
     @discardableResult
-    func background(_ value: UIColor) -> Self {
+    func background(_ value: PlatformColor) -> Self {
         return appending(key: "background", value: value.hexString)
     }
 }

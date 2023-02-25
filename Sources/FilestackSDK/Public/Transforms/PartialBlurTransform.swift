@@ -7,7 +7,11 @@
 //
 
 import Foundation
+#if os(iOS)
 import UIKit
+#else
+import Cocoa
+#endif
 
 /// Changes image brightness, saturation and hue.
 public class PartialBlurTransform: Transform {

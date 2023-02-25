@@ -7,7 +7,11 @@
 //
 
 import Foundation
+#if os(iOS)
 import UIKit
+#else
+import Cocoa
+#endif
 
 /// Detects the faces contained inside an image.
 public class DetectFacesTransform: Transform {
@@ -44,7 +48,7 @@ public extension DetectFacesTransform {
     ///
     /// - Parameter value: Will change the color of the "face object" boxes and text.
     @discardableResult
-    func color(_ value: UIColor) -> Self {
+    func color(_ value: PlatformColor) -> Self {
         return appending(key: "color", value: value.hexString)
     }
 

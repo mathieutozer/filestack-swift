@@ -6,9 +6,13 @@
 //  Copyright © 2017 Filestack. All rights reserved.
 //
 
+#if os(iOS)
 import UIKit
+#else
+import Cocoa
+#endif
 
-extension UIColor {
+extension PlatformColor {
     var hexString: String {
         var red: CGFloat = 0
         var green: CGFloat = 0

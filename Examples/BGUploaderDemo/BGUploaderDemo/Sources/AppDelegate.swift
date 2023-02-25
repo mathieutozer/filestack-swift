@@ -5,7 +5,11 @@
 //  Created by Ruben Nine on 20/10/21.
 //
 
+#if os(iOS)
 import UIKit
+#else
+import Cocoa
+#endif
 import FilestackSDK
 import BGUploader
 

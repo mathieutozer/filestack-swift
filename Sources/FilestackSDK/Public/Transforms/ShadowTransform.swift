@@ -7,7 +7,11 @@
 //
 
 import Foundation
+#if os(iOS)
 import UIKit
+#else
+import Cocoa
+#endif
 
 /// Applies a shadow border effect to the image.
 public class ShadowTransform: Transform {
@@ -51,7 +55,7 @@ public extension ShadowTransform {
     ///
     /// - Parameter value: Sets the shadow color.
     @discardableResult
-    func color(_ value: UIColor) -> Self {
+    func color(_ value: PlatformColor) -> Self {
         return appending(key: "color", value: value.hexString)
     }
 
@@ -60,7 +64,7 @@ public extension ShadowTransform {
     /// - Parameter value: Sets the background color to display behind the image,
     /// like a matte the shadow is cast on.
     @discardableResult
-    func background(_ value: UIColor) -> Self {
+    func background(_ value: PlatformColor) -> Self {
         return appending(key: "background", value: value.hexString)
     }
 }

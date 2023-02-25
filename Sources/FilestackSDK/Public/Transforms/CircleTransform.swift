@@ -7,7 +7,11 @@
 //
 
 import Foundation
+#if os(iOS)
 import UIKit
+#else
+import Cocoa
+#endif
 
 /// Applies a circle border effect to the image.
 public class CircleTransform: Transform {
@@ -26,7 +30,7 @@ public extension CircleTransform {
     ///
     /// - Parameter value: Sets the background color to display behind the image.
     @discardableResult
-    func background(_ value: UIColor) -> Self {
+    func background(_ value: PlatformColor) -> Self {
         return appending(key: "background", value: value.hexString)
     }
 }

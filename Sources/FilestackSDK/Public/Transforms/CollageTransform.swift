@@ -7,7 +7,11 @@
 //
 
 import Foundation
+#if os(iOS)
 import UIKit
+#else
+import Cocoa
+#endif
 
 /// The collage task accepts an array of Filestack file handles, storage aliases, or external URLs.
 /// These files are appended in given order to the base file of the transformation URL.
@@ -43,7 +47,7 @@ public extension CollageTransform {
     ///
     /// - Parameter value: Sets the background color to display behind the images.
     @discardableResult
-    func color(_ value: UIColor) -> Self {
+    func color(_ value: PlatformColor) -> Self {
         return appending(key: "color", value: value.hexString)
     }
 

@@ -7,7 +7,11 @@
 //
 
 import Foundation
+#if os(iOS)
 import UIKit
+#else
+import Cocoa
+#endif
 
 /// Applies a Polaroid border effect to the image.
 public class PolaroidTransform: Transform {
@@ -26,7 +30,7 @@ public extension PolaroidTransform {
     ///
     /// - Parameter value: Sets the Polaroid frame color.
     @discardableResult
-    func color(_ value: UIColor) -> Self {
+    func color(_ value: PlatformColor) -> Self {
         return appending(key: "color", value: value.hexString)
     }
 
@@ -42,7 +46,7 @@ public extension PolaroidTransform {
     ///
     /// - Parameter value: Sets the background color to display behind the Polaroid if it has been rotated at all.
     @discardableResult
-    func background(_ value: UIColor) -> Self {
+    func background(_ value: PlatformColor) -> Self {
         return appending(key: "background", value: value.hexString)
     }
 }

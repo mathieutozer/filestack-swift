@@ -7,7 +7,11 @@
 //
 
 import Foundation
+#if os(iOS)
 import UIKit
+#else
+import Cocoa
+#endif
 
 /// Rotates an image in a range from 0 to 359 degrees or based on Exif information.
 public class RotateTransform: Transform {
@@ -48,7 +52,7 @@ public extension RotateTransform {
     ///
     /// - Parameter value: The background color to display if the image is rotated less than a full 90 degrees.
     @discardableResult
-    func background(_ value: UIColor) -> Self {
+    func background(_ value: PlatformColor) -> Self {
         return appending(key: "background", value: value.hexString)
     }
 }
